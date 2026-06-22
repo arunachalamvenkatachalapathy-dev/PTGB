@@ -1,39 +1,230 @@
-/* ============================================================
-   PARAVANAR TRIPARTITE GOVERNANCE BOARD — SCRIPT
-   Theme Toggle · Blockchain Evidence · IoT Dashboard · Animations
-   ============================================================ */
-
-(function () {
-    'use strict';
-
-    // ── DYNAMIC BACKGROUND TRANSITION ──
-    const cleanBg = document.getElementById('bg-layer-clean');
-    
-    function updateBackground() {
-        if (!cleanBg) return;
-        // Calculate scroll percentage
-        const scrollMax = document.documentElement.scrollHeight - window.innerHeight;
-        if (scrollMax <= 0) return;
-        
-        let ratio = window.scrollY / scrollMax;
-        // Use a power curve so it stays polluted for a bit, then transitions rapidly to clean
-        ratio = Math.pow(ratio, 1.5);
-        
-        cleanBg.style.opacity = Math.min(Math.max(ratio, 0), 1).toFixed(3);
-    }
-
-    // ── NAVIGATION ──
+document.addEventListener("DOMContentLoaded", function() {
+    // ── NAVBAR SCROLL EFFECT ──
     const nav = document.getElementById('main-nav');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+            nav.classList.add('scrolled');
+        } else {
+            nav.classList.remove('scrolled');
+        }
+    });
+
+    // ── MOBILE MENU TOGGLE ──
     const navToggle = document.getElementById('nav-toggle');
     const navLinks = document.getElementById('nav-links');
-    const allNavLinks = document.querySelectorAll('.nav-link');
+    if (navToggle && navLinks) {
+        navToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            navToggle.classList.toggle('active');
+        });
+    }
 
-    // Scroll effects
-    window.addEventListener('scroll', () => {
-        nav.classList.toggle('scrolled', window.scrollY > 40);
-        updateActiveNav();
-        updateScrollProgress();
-        updateBackground(); // Update the dynamic background layer
+    // ── BLOCKCHAIN CUSTODY LOGIC ──
+    function generateHash(data) {
+        let hash = 0;
+        for (let i = 0; i < data.length; i++) {
+            const char = data.charCodeAt(i);
+            hash = ((hash << 5) - hash) + char;
+            hash = hash & hash; // Convert to 32bit integer
+        }
+        return '0x' + Math.abs(hash).toString(16).padStart(8, '0') + Math.random().toString(16).substr(2, 6);
+    }
+
+    const archiveSelect = document.getElementById('archive-select');
+    const custodyLog = document.getElementById('custody-log');
+    
+    // Sample data for the dropdown
+    const monthlyData = [
+        { id: '2026-06', label: 'June 2026 (Current)', status: 'Active' },
+        { id: '2026-05', label: 'May 2026', status: 'Sealed' },
+        { id: '2026-04', label: 'April 2026', status: 'Sealed' }
+    ];
+
+    // Initial chain for the current month
+    let currentChain = [
+        { timestamp: '2026-06-21 08:00', actor: 'TNPCB Sensor Array #4', action: 'Water Quality Logged', hash: generateHash('log1') },
+        { timestamp: '2026-06-20 18:30', actor: 'NLCIL Extraction Hub', action: 'Discharge Volume Updated', hash: generateHash('log2') },
+        { timestamp: '2026-06-19 14:15', actor: 'Paravanar Community Board', action: 'Verification Signed', hash: generateHash('log3') },
+        { timestamp: '2026-06-18 09:00', actor: 'TNPCB Sensor Array #2', action: 'Water Quality Logged', hash: generateHash('log4') }
+    ];
+
+    function saveChain(chain) {
+        localStorage.setItem('ptgb_chain', JSON.stringify(chain));
+    }
+
+    function loadChain() {
+        const stored = localStorage.getItem('ptgb_chain');
+        return stored ? JSON.parse(stored) : currentChain;
+    }
+
+    function renderArchiveSelect() {
+        if (!archiveSelect) return;
+        archiveSelect.innerHTML = '';
+        monthlyData.forEach(month => {
+            const option = document.createElement('option');
+            option.value = month.id;
+            option.textContent = `${month.label} - ${month.status}`;
+            archiveSelect.appendChild(option);
+        });
+        
+        archiveSelect.addEventListener('change', (e) => {
+            if (e.target.value === '2026-06') {
+                renderCustodyLog(loadChain());
+            } else {
+                // Generate a dummy sealed chain for past months
+                const pastChain = [
+                    { timestamp: `${e.target.value}-30 23:59`, actor: 'System Auto-Seal', action: 'Ledger Finalized', hash: generateHash('seal'+e.target.value) },
+                    { timestamp: `${e.target.value}-15 12:00`, actor: 'TNPCB Auditor', action: 'Monthly Review Passed', hash: generateHash('audit'+e.target.value) }
+                ];
+                renderCustodyLog(pastChain);
+            }
+        });
+    }
+
+    function renderCustodyLog(chain = loadChain()) {
+        if (!custodyLog) return;
+        custodyLog.innerHTML = '';
+        chain.forEach(block => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${block.timestamp}</td>
+                <td>${block.actor}</td>
+                <td>${block.action}</td>
+                <td class="hash-cell">${block.hash}</td>
+            `;
+            custodyLog.appendChild(row);
+        });
+    }
+
+    function updateBlockCount() {
+        const chain = loadChain();
+        const countDisplays = document.querySelectorAll('#block-count-display .counter');
+        countDisplays.forEach(el => {
+            el.setAttribute('data-count', chain.length);
+            el.textContent = chain.length;
+        });
+    }
+
+    // Initialize
+    renderArchiveSelect();
+    updateBlockCount();
+    renderCustodyLog();
+
+    // ── EVIDENCE BAR ANIMATION ──
+    const barObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.2 });
+
+    document.querySelectorAll('.evidence-card, .capex-breakdown').forEach(el => {
+        el.setAttribute('data-animate', '');
+        barObserver.observe(el);
+    });
+
+    // ============================================================
+    // SIMULATION MODE LOGIC
+    // ============================================================
+    const simBtn = document.getElementById('sim-btn');
+    const simModal = document.getElementById('sim-modal');
+    const simClose = document.getElementById('sim-close');
+    const simMap = document.querySelector('.sim-map');
+    const simScanner = document.getElementById('sim-scanner');
+    const simStatusText = document.getElementById('sim-status-text');
+    const simProgress = document.getElementById('sim-progress');
+    const hudBoxes = document.querySelectorAll('.hud-box');
+    
+    // HUD Data Elements
+    const hudDischarge = document.getElementById('hud-discharge');
+    const hudTss = document.getElementById('hud-tss');
+    const hudHash = document.getElementById('hud-hash');
+    const hudVerify = document.getElementById('hud-verify');
+
+    let simTimeout1, simTimeout2, simTimeout3, simTimeout4, simTimeout5;
+
+    function resetSimulation() {
+        if (!simMap) return;
+        simMap.classList.remove('scanning');
+        simScanner.classList.remove('active');
+        hudBoxes.forEach(box => box.style.opacity = '0');
+        simStatusText.textContent = "INITIALIZING SYSTEMS...";
+        simProgress.style.width = '0%';
+        hudDischarge.textContent = '-- m³/s';
+        hudTss.textContent = '-- mg/L';
+        hudHash.textContent = 'PENDING';
+        hudVerify.textContent = 'AWAITING SCAN';
+        clearTimeout(simTimeout1);
+        clearTimeout(simTimeout2);
+        clearTimeout(simTimeout3);
+        clearTimeout(simTimeout4);
+        clearTimeout(simTimeout5);
+    }
+
+    function runSimulation() {
+        simProgress.style.width = '10%';
+        
+        simTimeout1 = setTimeout(() => {
+            simStatusText.textContent = "STEP 1: ENGINEERS INITIATING NLCIL DISCHARGE...";
+            simMap.classList.add('scanning');
+            simScanner.classList.add('active');
+            simProgress.style.width = '35%';
+            hudBoxes[0].style.opacity = '1';
+        }, 1500);
+
+        simTimeout2 = setTimeout(() => {
+            hudDischarge.textContent = '4,200 m³/s';
+            hudTss.textContent = '45 mg/L';
+            hudDischarge.style.color = '#34d399';
+            hudTss.style.color = '#34d399';
+        }, 2500);
+
+        simTimeout3 = setTimeout(() => {
+            simStatusText.textContent = "STEP 2: TNPCB OFFICIALS VERIFYING WATER SENSORS...";
+            simProgress.style.width = '65%';
+            hudBoxes[1].style.opacity = '1';
+            hudHash.textContent = 'GENERATING...';
+        }, 4000);
+
+        simTimeout4 = setTimeout(() => {
+            hudHash.textContent = '0x9a4f...3c12';
+            hudHash.style.color = '#38bdf8';
+            hudVerify.textContent = 'CITIZENS VERIFIED';
+            hudVerify.style.color = '#34d399';
+            simProgress.style.width = '90%';
+        }, 5500);
+
+        simTimeout5 = setTimeout(() => {
+            simStatusText.textContent = "STEP 3: WORKFLOW COMPLETE. ALL PARTIES ALIGNED.";
+            simProgress.style.width = '100%';
+            simScanner.classList.remove('active');
+        }, 7500);
+    }
+
+    if (simBtn && simModal && simClose) {
+        simBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            resetSimulation();
+            simModal.classList.add('active');
+            runSimulation();
+        });
+
+        simClose.addEventListener('click', () => {
+            simModal.classList.remove('active');
+            resetSimulation();
+        });
+
+        // Close on clicking backdrop
+        simModal.addEventListener('click', (e) => {
+            if (e.target === simModal) {
+                simModal.classList.remove('active');
+                resetSimulation();
+            }
+        });
+    }
+
+});
     });
 
     // Mobile toggle
