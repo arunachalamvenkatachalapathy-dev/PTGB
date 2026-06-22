@@ -569,6 +569,541 @@
                     <div class="team-avatar" style="background: #27ae60">🔬</div>
                     <h4>Independent Experts</h4>
                     <p class="team-role">Citizen Science & Civil Society Oversight</p>
+                    <circle cx="10" cy="24" r="3" fill="#0ca678" />
+                    <circle cx="30" cy="24" r="3" fill="#0f766e" />
+                    <circle cx="20" cy="22" r="1.5" fill="#1e40af" />
+                    <path d="M20 11V20.5" stroke="url(#logo-gradient-1)" stroke-width="1.5" />
+                    <path d="M19 23.5L12 24" stroke="url(#logo-gradient-1)" stroke-width="1.5" />
+                    <path d="M21 23.5L28 24" stroke="url(#logo-gradient-1)" stroke-width="1.5" />
+                </svg>
+                <div class="nav-logo-text">
+                    <span class="nav-logo-title">PTGB</span>
+                    <span class="nav-logo-sub">Governance Board</span>
+                </div>
+            </a>
+            <div class="nav-links" id="nav-links">
+                <a href="#dashboard" class="nav-link">Dashboard</a>
+                <a href="#evidence" class="nav-link">Evidence</a>
+                <a href="#solution" class="nav-link">ACW Framework</a>
+                <a href="#blockchain" class="nav-link">Blockchain</a>
+                <a href="#economics" class="nav-link">Finance</a>
+                <a href="#governance" class="nav-link">Governance</a>
+                <a href="#team" class="nav-link">Board</a>
+            </div>
+            <div class="nav-actions">
+                <button class="btn btn-outline btn-sm sim-toggle-btn" id="sim-btn" aria-label="Open Simulation">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+                    Simulation
+                </button>
+                <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header id="hero" class="hero">
+        <div class="hero-bg-layers">
+            <div class="hero-gradient"></div>
+        </div>
+        <div class="hero-content">
+            <div class="hero-badge animate-fade-up">
+                <span class="badge-dot"></span>
+                Paravanar Watershed Tripartite Management
+            </div>
+            <h1 class="hero-title animate-fade-up delay-1">
+                Paravanar Tripartite<br>
+                <span class="hero-title-accent">Governance Board</span>
+            </h1>
+            <p class="hero-subtitle animate-fade-up delay-2">
+                Blockchain-verified environmental monitoring, community evidence framework, and watershed restoration oversight for Cuddalore District, Tamil Nadu
+            </p>
+            <div class="hero-pillars animate-fade-up delay-3">
+                <div class="hero-pillar">
+                    <div class="pillar-icon">🏭</div>
+                    <div class="pillar-label">NLCIL</div>
+                    <div class="pillar-role">Technical & Funding</div>
+                </div>
+                <div class="hero-pillar-connector">
+                    <svg viewBox="0 0 60 20" width="60"><path d="M0 10h60" stroke="currentColor" stroke-width="1.5" stroke-dasharray="4 4"/></svg>
+                </div>
+                <div class="hero-pillar">
+                    <div class="pillar-icon">🏛️</div>
+                    <div class="pillar-label">NMCG/TNPCB</div>
+                    <div class="pillar-role">Verification & Liaison</div>
+                </div>
+                <div class="hero-pillar-connector">
+                    <svg viewBox="0 0 60 20" width="60"><path d="M0 10h60" stroke="currentColor" stroke-width="1.5" stroke-dasharray="4 4"/></svg>
+                </div>
+                <div class="hero-pillar">
+                    <div class="pillar-icon">👥</div>
+                    <div class="pillar-label">Community</div>
+                    <div class="pillar-role">Oversight & Escrow</div>
+                </div>
+            </div>
+            <div class="hero-cta animate-fade-up delay-4">
+                <a href="#blockchain" class="btn btn-primary">🔗 Evidence Ledger</a>
+                <a href="#dashboard" class="btn btn-outline">📊 View Dashboard</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Dashboard Section -->
+    <section id="dashboard" class="section section-dashboard">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Real-Time Status</span>
+                <h2 class="section-title">Watershed<br><span class="text-gradient-blue">Dashboard</span></h2>
+                <p class="section-desc">Live monitoring overview from six basin-specific IoT sentinel stations across the Paravanar watershed.</p>
+            </div>
+            <div class="dashboard-stats" data-animate>
+                <div class="dash-stat">
+                    <div class="dash-stat-icon">📡</div>
+                    <div class="dash-stat-value"><span class="counter" data-count="6">0</span></div>
+                    <div class="dash-stat-label">IoT Sentinel Stations</div>
+                    <div class="dash-stat-status status-active">● Active</div>
+                </div>
+                <div class="dash-stat">
+                    <div class="dash-stat-icon">🔗</div>
+                    <div class="dash-stat-value" id="block-count-display"><span class="counter" data-count="0">0</span></div>
+                    <div class="dash-stat-label">Blocks on Chain</div>
+                    <div class="dash-stat-status status-synced">● Synced</div>
+                </div>
+                <div class="dash-stat">
+                    <div class="dash-stat-icon">👥</div>
+                    <div class="dash-stat-value"><span class="counter" data-count="20">0</span></div>
+                    <div class="dash-stat-label">Community Monitors</div>
+                    <div class="dash-stat-status status-active">● Deployed</div>
+                </div>
+                <div class="dash-stat">
+                    <div class="dash-stat-icon">⚠️</div>
+                    <div class="dash-stat-value"><span class="counter" data-count="3">0</span></div>
+                    <div class="dash-stat-label">Contamination Zones</div>
+                    <div class="dash-stat-status status-alert">● Critical</div>
+                </div>
+            </div>
+
+            <!-- IoT Station Cards -->
+            <div class="station-grid" data-animate>
+                <h3 class="subsection-title">IoT Sentinel Station Network</h3>
+                <div class="stations">
+                    <div class="station-card" id="station-1">
+                        <div class="station-header">
+                            <span class="station-id">STN-01</span>
+                            <span class="station-status status-alert">Critical</span>
+                        </div>
+                        <div class="station-name">Upper Paravanar — Neyveli Discharge</div>
+                        <div class="station-readings">
+                            <div class="reading"><span class="reading-label">Hg</span><span class="reading-value reading-danger">0.115 mg/L</span></div>
+                            <div class="reading"><span class="reading-label">pH</span><span class="reading-value">6.2</span></div>
+                            <div class="reading"><span class="reading-label">DO</span><span class="reading-value reading-warn">3.8 mg/L</span></div>
+                        </div>
+                        <div class="station-time">Last: <span class="live-time"></span></div>
+                    </div>
+                    <div class="station-card" id="station-2">
+                        <div class="station-header">
+                            <span class="station-id">STN-02</span>
+                            <span class="station-status status-alert">Severe</span>
+                        </div>
+                        <div class="station-name">Tholkappiar Nagar — Borewell Cluster</div>
+                        <div class="station-readings">
+                            <div class="reading"><span class="reading-label">Hg</span><span class="reading-value reading-danger">0.250 mg/L</span></div>
+                            <div class="reading"><span class="reading-label">pH</span><span class="reading-value">5.9</span></div>
+                            <div class="reading"><span class="reading-label">DO</span><span class="reading-value reading-warn">4.1 mg/L</span></div>
+                        </div>
+                        <div class="station-time">Last: <span class="live-time"></span></div>
+                    </div>
+                    <div class="station-card" id="station-3">
+                        <div class="station-header">
+                            <span class="station-id">STN-03</span>
+                            <span class="station-status status-warn">Elevated</span>
+                        </div>
+                        <div class="station-name">Karumbu Thottam — Agricultural Zone</div>
+                        <div class="station-readings">
+                            <div class="reading"><span class="reading-label">Se</span><span class="reading-value reading-danger">24.12 mg/kg</span></div>
+                            <div class="reading"><span class="reading-label">pH</span><span class="reading-value">6.8</span></div>
+                            <div class="reading"><span class="reading-label">Pb</span><span class="reading-value reading-warn">2.10 mg/L</span></div>
+                        </div>
+                        <div class="station-time">Last: <span class="live-time"></span></div>
+                    </div>
+                    <div class="station-card" id="station-4">
+                        <div class="station-header">
+                            <span class="station-id">STN-04</span>
+                            <span class="station-status status-alert">Critical</span>
+                        </div>
+                        <div class="station-name">Buckingham Canal — Receiving Water</div>
+                        <div class="station-readings">
+                            <div class="reading"><span class="reading-label">Hg</span><span class="reading-value reading-danger">0.115 mg/L</span></div>
+                            <div class="reading"><span class="reading-label">pH</span><span class="reading-value">6.5</span></div>
+                            <div class="reading"><span class="reading-label">DO</span><span class="reading-value">5.2 mg/L</span></div>
+                        </div>
+                        <div class="station-time">Last: <span class="live-time"></span></div>
+                    </div>
+                    <div class="station-card" id="station-5">
+                        <div class="station-header">
+                            <span class="station-id">STN-05</span>
+                            <span class="station-status status-warn">Moderate</span>
+                        </div>
+                        <div class="station-name">Cuddalore Estuary — Outfall</div>
+                        <div class="station-readings">
+                            <div class="reading"><span class="reading-label">Hg</span><span class="reading-value reading-warn">0.063 mg/L</span></div>
+                            <div class="reading"><span class="reading-label">pH</span><span class="reading-value">7.1</span></div>
+                            <div class="reading"><span class="reading-label">DO</span><span class="reading-value">6.4 mg/L</span></div>
+                        </div>
+                        <div class="station-time">Last: <span class="live-time"></span></div>
+                    </div>
+                    <div class="station-card" id="station-6">
+                        <div class="station-header">
+                            <span class="station-id">STN-06</span>
+                            <span class="station-status status-ok">Monitoring</span>
+                        </div>
+                        <div class="station-name">Veeranam Lake — Intake Zone</div>
+                        <div class="station-readings">
+                            <div class="reading"><span class="reading-label">Hg</span><span class="reading-value">0.001 mg/L</span></div>
+                            <div class="reading"><span class="reading-label">pH</span><span class="reading-value">7.4</span></div>
+                            <div class="reading"><span class="reading-label">DO</span><span class="reading-value">7.8 mg/L</span></div>
+                        </div>
+                        <div class="station-time">Last: <span class="live-time"></span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Evidence Section (reframed Crisis) -->
+    <section id="evidence" class="section section-evidence">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Regulatory Evidence Record</span>
+                <h2 class="section-title">Contamination<br><span class="text-gradient">Evidence Base</span></h2>
+                <p class="section-desc">Judicially recorded evidence submitted under NGT O.A. No. 107 of 2023 (SZ), confirmed by TNPCB Committee Reports.</p>
+            </div>
+            <div class="evidence-grid">
+                <div class="evidence-card evidence-card-mercury" data-animate>
+                    <div class="evidence-card-badge">TNPCB Confirmed</div>
+                    <div class="evidence-card-value"><span class="counter" data-count="250">0</span>×</div>
+                    <h3>Mercury in Borewells</h3>
+                    <p>Tholkappiar Nagar community borewells at 0.250 mg/L — 250× IS 10500:2012 limit</p>
+                    <div class="evidence-bar"><div class="evidence-bar-fill" style="--fill-width: 100%"></div></div>
+                    <div class="evidence-source">Source: TNPCB Committee Report (2025) → NGT Record</div>
+                </div>
+                <div class="evidence-card evidence-card-selenium" data-animate>
+                    <div class="evidence-card-badge">Field Verified</div>
+                    <div class="evidence-card-value"><span class="counter" data-count="24">0</span>×</div>
+                    <h3>Selenium in Soils</h3>
+                    <p>Agricultural soils at Karumbu Thottam register 24.12 mg/kg against 1.0 mg/kg guideline</p>
+                    <div class="evidence-bar"><div class="evidence-bar-fill" style="--fill-width: 96%"></div></div>
+                    <div class="evidence-source">Source: Soil analysis, 500 ha paddy assessment</div>
+                </div>
+                <div class="evidence-card evidence-card-health" data-animate>
+                    <div class="evidence-card-badge">Community Survey</div>
+                    <div class="evidence-card-value"><span class="counter" data-count="89">0</span>%</div>
+                    <h3>Health Impact</h3>
+                    <p>Surveyed residents reporting kidney disease, skin conditions, and respiratory illness</p>
+                    <div class="evidence-bar"><div class="evidence-bar-fill" style="--fill-width: 89%"></div></div>
+                    <div class="evidence-source">Source: Dharmadhikary et al. (2023) structured survey</div>
+                </div>
+            </div>
+            <div class="zone-map" data-animate>
+                <h3 class="subsection-title">Contamination Zone Classification</h3>
+                <div class="zone-cards">
+                    <div class="zone-card zone-critical"><div class="zone-indicator"></div><div class="zone-info"><span class="zone-label">Zone 1 — Upper Paravanar</span><h4>Critically Polluted</h4><p>Neyveli Industrial Corridor. Mercury at 250× permissible limit.</p></div></div>
+                    <div class="zone-card zone-severe"><div class="zone-indicator"></div><div class="zone-info"><span class="zone-label">Zone 2 — Middle Paravanar</span><h4>Severely Polluted</h4><p>Selenium in 500 hectares of paddy at 24× guideline.</p></div></div>
+                    <div class="zone-card zone-cumulative"><div class="zone-indicator"></div><div class="zone-info"><span class="zone-label">Zone 3 — Lower Paravanar</span><h4>Cumulative Burden</h4><p>Cuddalore Estuary. Mercury at 115× limit by TNPCB.</p></div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section id="solution" class="section section-solution">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Board Mandate: Restoration Infrastructure</span>
+                <h2 class="section-title">Advanced Constructed<br><span class="text-gradient-blue">Wetland Framework</span></h2>
+                <p class="section-desc">10-hectare Recirculating VF-CW with Selective Reactive Zone Architecture — the Board's primary infrastructure mandate.</p>
+            </div>
+            <div class="solution-overview">
+                <div class="solution-visual" data-animate>
+                    <div class="wetland-diagram">
+                        <div class="wetland-layer wl-1"><div class="layer-label">Upper Guard Layer <span>0–15 cm</span></div><div class="layer-content"><span class="layer-media">Woodchip Biochar</span><span class="layer-function">Alkalinity buffering · Hg²⁺ complexation</span></div></div>
+                        <div class="wetland-layer wl-2"><div class="layer-label">Core Treatment Zone (SRZA) <span>15–65 cm</span></div><div class="layer-content"><span class="layer-media">70% Crushed Granite + 30% GAC-Zeolite Trenches</span><span class="layer-function">Primary heavy metal removal · HDPE baffles</span></div></div>
+                        <div class="wetland-layer wl-3"><div class="layer-label">Support/Filter Layer <span>65–80 cm</span></div><div class="layer-content"><span class="layer-media">Coarse River Sand (1–3 mm)</span><span class="layer-function">Secondary filtration</span></div></div>
+                        <div class="wetland-layer wl-4"><div class="layer-label">Drainage Layer <span>80–100 cm</span></div><div class="layer-content"><span class="layer-media">Crushed Granite + HDPE Pipes</span><span class="layer-function">Gravity drainage to recirculation sump</span></div></div>
+                        <div class="flow-arrows"><div class="flow-arrow flow-in">▼ Influent 10 MLD</div><div class="flow-arrow flow-recirc">↻ Recirculation 1:1</div></div>
+                    </div>
+                </div>
+                <div class="solution-specs" data-animate>
+                    <div class="spec-card"><div class="spec-icon">📐</div><div class="spec-label">Design Flow</div><div class="spec-value">10 MLD</div><div class="spec-note">10,000 m³/day</div></div>
+                    <div class="spec-card"><div class="spec-icon">🔄</div><div class="spec-label">Recirculation</div><div class="spec-value">1:1</div><div class="spec-note">20,000 m³/day total</div></div>
+                    <div class="spec-card"><div class="spec-icon">⏱️</div><div class="spec-label">Effective HRT</div><div class="spec-value">67 hrs</div><div class="spec-note">Kadlec & Wallace model</div></div>
+                    <div class="spec-card"><div class="spec-icon">📏</div><div class="spec-label">Surface Area</div><div class="spec-value">10 ha</div><div class="spec-note">100,000 m²</div></div>
+                    <div class="spec-card"><div class="spec-icon">🧪</div><div class="spec-label">Hg Removal</div><div class="spec-value">95.2%</div><div class="spec-note">k-C* modelled</div></div>
+                    <div class="spec-card"><div class="spec-icon">🔬</div><div class="spec-label">Bench Test</div><div class="spec-value">60%</div><div class="spec-note">24-hr EBCT PoC</div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== BLOCKCHAIN EVIDENCE FRAMEWORK ===== -->
+    <section id="blockchain" class="section section-blockchain">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Blockchain Evidence Framework</span>
+                <h2 class="section-title">Cryptographic<br><span class="text-gradient-teal">Evidence Ledger</span></h2>
+                <p class="section-desc">Tamper-proof, SHA-256 hashed chain-of-custody for all water quality readings. NFC-tagged samples with cryptographic timestamps. Community-verifiable integrity.</p>
+            </div>
+
+            <!-- How It Works -->
+            <div class="blockchain-explainer" data-animate>
+                <h3 class="subsection-title">How the Evidence Chain Works</h3>
+                <div class="chain-flow">
+                    <div class="chain-step">
+                        <div class="chain-step-num">1</div>
+                        <div class="chain-step-icon">📡</div>
+                        <h4>IoT Sensor / Monitor Submits</h4>
+                        <p>Sentinel station or community monitor records water quality parameters (Hg, Se, Pb, pH, DO).</p>
+                    </div>
+                    <div class="chain-arrow">→</div>
+                    <div class="chain-step">
+                        <div class="chain-step-num">2</div>
+                        <div class="chain-step-icon">🏷️</div>
+                        <h4>NFC Tag & Timestamp</h4>
+                        <p>Sample tagged with cryptographic NFC seal. ISO 8601 timestamp recorded.</p>
+                    </div>
+                    <div class="chain-arrow">→</div>
+                    <div class="chain-step">
+                        <div class="chain-step-num">3</div>
+                        <div class="chain-step-icon">🔐</div>
+                        <h4>SHA-256 Hash Generated</h4>
+                        <p>Block data + previous hash → SHA-256 digest creates immutable chain link.</p>
+                    </div>
+                    <div class="chain-arrow">→</div>
+                    <div class="chain-step">
+                        <div class="chain-step-num">4</div>
+                        <div class="chain-step-icon">✅</div>
+                        <h4>Community Verification</h4>
+                        <p>Anyone can verify chain integrity by recomputing all hashes. Tampering detected instantly.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab Interface -->
+            <div class="blockchain-tabs" data-animate>
+                <div class="tab-buttons">
+                    <button class="tab-btn active" data-tab="submit">📝 Submit Reading</button>
+                    <button class="tab-btn" data-tab="ledger">🔗 View Ledger</button>
+                    <button class="tab-btn" data-tab="verify">✅ Verify Chain</button>
+                    <button class="tab-btn" data-tab="custody">🏷️ Chain of Custody</button>
+                </div>
+
+                <!-- Submit Tab -->
+                <div class="tab-content active" id="tab-submit">
+                    <div class="submit-form-container">
+                        <h3>Submit Water Quality Reading</h3>
+                        <p class="form-desc">Readings are SHA-256 hashed and appended to the immutable evidence chain. All entries are timestamped and linked to previous block.</p>
+                        <form id="reading-form" class="reading-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="station-select">Station</label>
+                                    <select id="station-select" required>
+                                        <option value="">Select station...</option>
+                                        <option value="STN-01">STN-01 — Upper Paravanar</option>
+                                        <option value="STN-02">STN-02 — Tholkappiar Nagar</option>
+                                        <option value="STN-03">STN-03 — Karumbu Thottam</option>
+                                        <option value="STN-04">STN-04 — Buckingham Canal</option>
+                                        <option value="STN-05">STN-05 — Cuddalore Estuary</option>
+                                        <option value="STN-06">STN-06 — Veeranam Lake</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="submitter-name">Submitted By</label>
+                                    <input type="text" id="submitter-name" placeholder="Monitor name or ID" required>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group"><label for="hg-value">Mercury (mg/L)</label><input type="number" id="hg-value" step="0.001" min="0" placeholder="0.000" required></div>
+                                <div class="form-group"><label for="se-value">Selenium (mg/kg)</label><input type="number" id="se-value" step="0.01" min="0" placeholder="0.00"></div>
+                                <div class="form-group"><label for="pb-value">Lead (mg/L)</label><input type="number" id="pb-value" step="0.001" min="0" placeholder="0.000"></div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group"><label for="ph-value">pH</label><input type="number" id="ph-value" step="0.1" min="0" max="14" placeholder="7.0" required></div>
+                                <div class="form-group"><label for="do-value">Dissolved Oxygen (mg/L)</label><input type="number" id="do-value" step="0.1" min="0" placeholder="0.0" required></div>
+                                <div class="form-group"><label for="nfc-tag">NFC Tag ID</label><input type="text" id="nfc-tag" placeholder="Auto-generated" readonly></div>
+                            </div>
+                            <div class="form-actions">
+                                <button type="submit" class="btn btn-primary" id="submit-reading-btn">🔗 Hash & Submit to Chain</button>
+                                <button type="button" class="btn btn-outline" id="generate-mock-btn">🎲 Generate Mock Data</button>
+                            </div>
+                        </form>
+                        <div id="submit-result" class="submit-result hidden"></div>
+                    </div>
+                </div>
+
+                <!-- Ledger Tab -->
+                <div class="tab-content" id="tab-ledger">
+                    <div class="ledger-container">
+                        <div class="ledger-header">
+                            <h3>Evidence Chain Ledger</h3>
+                            <div class="ledger-actions" style="display: flex; gap: 15px; align-items: center; flex-wrap: wrap; justify-content: flex-end;">
+                                <div style="display: flex; align-items: center; gap: 10px;">
+                                    <select id="ledger-view-select" class="form-select" style="padding: 4px 8px; font-size: 0.85rem; border-radius: 4px; border: 1px solid var(--border-color); background: var(--bg-secondary); color: var(--text-primary);"></select>
+                                    <span class="ledger-count" id="ledger-count">0 blocks</span>
+                                </div>
+                                <div style="display: flex; gap: 5px;">
+                                    <button class="btn btn-sm" id="export-ledger-btn">📥 Export JSON</button>
+                                    <button class="btn btn-sm btn-secondary" id="archive-ledger-btn">📁 Archive Chain</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ledger-chain" id="ledger-chain">
+                            <div class="ledger-empty">
+                                <div class="empty-icon">🔗</div>
+                                <p>No blocks on chain yet. Submit a reading to create the genesis block.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Verify Tab -->
+                <div class="tab-content" id="tab-verify">
+                    <div class="verify-container">
+                        <h3>Chain Integrity Verification</h3>
+                        <p class="form-desc">Recompute all SHA-256 hashes and verify each block's link to its predecessor. Any tampering will be detected and flagged.</p>
+                        <button class="btn btn-primary btn-lg" id="verify-chain-btn">🔍 Verify Entire Chain</button>
+                        <div id="verify-result" class="verify-result hidden"></div>
+                        <div id="verify-blocks" class="verify-blocks"></div>
+                    </div>
+                </div>
+
+                <!-- Chain of Custody Tab -->
+                <div class="tab-content" id="tab-custody">
+                    <div class="custody-container">
+                        <h3>NFC-Tagged Chain of Custody</h3>
+                        <p class="form-desc">Each physical sample is sealed with an NFC tag generating a unique cryptographic ID. The custody trail is recorded on-chain.</p>
+                        <div class="custody-flow">
+                            <div class="custody-step"><div class="custody-icon">🧪</div><h4>Sample Collection</h4><p>Field collection at sentinel station. GPS coordinates + ISO 8601 timestamp logged.</p></div>
+                            <div class="custody-arrow">→</div>
+                            <div class="custody-step"><div class="custody-icon">🏷️</div><h4>NFC Seal Applied</h4><p>Tamper-evident NFC tag affixed. Tag writes: sample ID, collector, coordinates, time.</p></div>
+                            <div class="custody-arrow">→</div>
+                            <div class="custody-step"><div class="custody-icon">🚚</div><h4>Transport Logged</h4><p>Each custody transfer (collection → transport → lab) logged with NFC tap and timestamped.</p></div>
+                            <div class="custody-arrow">→</div>
+                            <div class="custody-step"><div class="custody-icon">🔬</div><h4>Lab Analysis</h4><p>NABL-accredited lab receives, scans NFC, confirms chain-of-custody, runs AAS analysis.</p></div>
+                            <div class="custody-arrow">→</div>
+                            <div class="custody-step"><div class="custody-icon">🔗</div><h4>On-Chain Record</h4><p>Results hashed with full custody trail. Immutable block appended to evidence chain.</p></div>
+                        </div>
+                        <div class="custody-log" id="custody-log">
+                            <h4>Recent Custody Events</h4>
+                            <div class="custody-entries" id="custody-entries"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Economics Section -->
+    <section id="economics" class="section section-economics">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Board Financial Oversight</span>
+                <h2 class="section-title">Investment &amp;<br><span class="text-gradient-gold">Environmental Debt</span></h2>
+                <p class="section-desc">₹125.66 Crore CAPEX framework — 3.3% of NLCIL's FY 2025-26 net profit. Board-supervised dual-pathway financing.</p>
+            </div>
+            <div class="finance-layout">
+                <div class="capex-breakdown" data-animate>
+                    <h3 class="subsection-title">CAPEX — ₹125.66 Crores</h3>
+                    <div class="capex-bars">
+                        <div class="capex-item"><div class="capex-label"><span>Part A: Civil & Earthworks</span><span class="capex-amount">₹8.55 Cr</span></div><div class="capex-bar"><div class="capex-fill fill-a" style="--capex-pct: 6.8%"></div></div></div>
+                        <div class="capex-item"><div class="capex-label"><span>Part B: Substrate Media</span><span class="capex-amount">₹85.65 Cr</span></div><div class="capex-bar"><div class="capex-fill fill-b" style="--capex-pct: 68.1%"></div></div></div>
+                        <div class="capex-item"><div class="capex-label"><span>Part C: Mechanical & Electrical</span><span class="capex-amount">₹18.00 Cr</span></div><div class="capex-bar"><div class="capex-fill fill-c" style="--capex-pct: 14.3%"></div></div></div>
+                        <div class="capex-item"><div class="capex-label"><span>Part D: EPCM & Contingency</span><span class="capex-amount">₹13.46 Cr</span></div><div class="capex-bar"><div class="capex-fill fill-d" style="--capex-pct: 10.7%"></div></div></div>
+                    </div>
+                </div>
+                <div class="env-debt" data-animate>
+                    <h3 class="subsection-title">Annual Environmental Debt — ₹20.74 Cr</h3>
+                    <div class="debt-items">
+                        <div class="debt-item"><div class="debt-icon">🏥</div><div class="debt-info"><span class="debt-label">CKD Direct Cost (371 patients)</span><span class="debt-value">₹5.56 Cr</span></div></div>
+                        <div class="debt-item"><div class="debt-icon">🫁</div><div class="debt-info"><span class="debt-label">Respiratory Illness Burden</span><span class="debt-value">₹11.30 Cr</span></div></div>
+                        <div class="debt-item"><div class="debt-icon">🌾</div><div class="debt-info"><span class="debt-label">Revenue Foregone (500 ha paddy)</span><span class="debt-value">₹3.86 Cr</span></div></div>
+                        <div class="debt-total"><span>Decade Total</span><strong>₹200+ Crores</strong></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Governance Section -->
+    <section id="governance" class="section section-governance">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Board Structure & Mandate</span>
+                <h2 class="section-title">Tripartite<br><span class="text-gradient-purple">Governance</span></h2>
+                <p class="section-desc">Three co-equal pillars governing restoration with dual-pathway financing and community escrow authority.</p>
+            </div>
+            <div class="governance-grid">
+                <div class="governance-card" data-animate>
+                    <div class="gov-icon">⚖️</div>
+                    <h3>Dual-Pathway Financing</h3>
+                    <div class="pathway-visual">
+                        <div class="pathway"><div class="pathway-header">Pathway 1 — Primary</div><div class="pathway-label">Polluter Pays / NGT Escrow</div><p>Full CAPEX from NLCIL capital reserves. Section 15 NGT Act.</p></div>
+                        <div class="pathway"><div class="pathway-header">Pathway 2 — Supplementary</div><div class="pathway-label">CSR Ecological Route</div><p>Schedule VII qualification. ₹42.41 Cr/cycle × ~2.97 cycles.</p></div>
+                    </div>
+                </div>
+                <div class="governance-card" data-animate>
+                    <div class="gov-icon">👥</div>
+                    <h3>Just Transition</h3>
+                    <div class="transition-stats">
+                        <div class="transition-stat"><div class="transition-value">15,999</div><div class="transition-label">Contract workers (70.2% of workforce)</div></div>
+                        <div class="transition-stat"><div class="transition-value">2–6 mo</div><div class="transition-label">Upskilling for solar/wind/monitoring roles</div></div>
+                        <div class="transition-stat"><div class="transition-value">₹3.86 Cr/yr</div><div class="transition-label">Farmer phytoremediation compensation</div></div>
+                    </div>
+                </div>
+                <div class="governance-card governance-card-mine" data-animate>
+                    <div class="gov-icon">⚠️</div>
+                    <h3>Mine-III Critical Prerequisite</h3>
+                    <p class="mine-warning">NLCIL's Mine-III expansion (4,841.99 ha) threatens Veeranam Lake — <strong>180 MLD to Chennai</strong>.</p>
+                    <div class="mine-conditions">
+                        <div class="condition"><span class="condition-num">i</span><p>ACW across all five discharge points before commencement</p></div>
+                        <div class="condition"><span class="condition-num">ii</span><p>Hg in Buckingham Canal below 0.002 mg/L for six quarters</p></div>
+                        <div class="condition"><span class="condition-num">iii</span><p>Real-time monitoring at Veeranam Lake borewells</p></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team / Board Section -->
+    <section id="team" class="section section-team">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Board Members & Advisors</span>
+                <h2 class="section-title">The <span class="text-gradient-blue">Board</span></h2>
+            </div>
+            <div class="team-grid">
+                <div class="team-card" data-animate>
+                    <div class="team-avatar" style="background: var(--accent-primary)">🏢</div>
+                    <h4>NLCIL Representatives</h4>
+                    <p class="team-role">Technical Oversight & Funding</p>
+                    <p class="team-affil">NLC India Limited</p>
+                </div>
+                <div class="team-card" data-animate>
+                    <div class="team-avatar" style="background: var(--accent-secondary)">🏛️</div>
+                    <h4>NMCG / TNPCB</h4>
+                    <p class="team-role">Milestone Verification & NGT Liaison</p>
+                    <p class="team-affil">Regulatory & Escrow Authority</p>
+                </div>
+                <div class="team-card" data-animate>
+                    <div class="team-avatar" style="background: #e67e22">👥</div>
+                    <h4>Local Stakeholder Collectives</h4>
+                    <p class="team-role">Community Authority & Escrow Withholding</p>
+                    <p class="team-affil">Affected Villages & Local Panchayats</p>
+                </div>
+                <div class="team-card" data-animate>
+                    <div class="team-avatar" style="background: #27ae60">🔬</div>
+                    <h4>Independent Experts</h4>
+                    <p class="team-role">Citizen Science & Civil Society Oversight</p>
                     <p class="team-affil">Paravanar River Basin Committee</p>
                 </div>
             </div>
